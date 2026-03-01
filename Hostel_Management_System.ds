@@ -1,0 +1,2799 @@
+/*
+ * Author       : shalonjovan
+ * Generated on : 01-Mar-2026 22:35:11
+ * Version      : 1.0
+ */
+ application "Hostel Management System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form complaints
+		{
+			displayname = "Complaints"
+			success message = "Complaint Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = students.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room
+			(
+				type = list	
+				displayname = "Room"
+				values  = rooms.ID
+    			displayformat = [room_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			complaint_type
+			(
+				type = picklist
+				displayname = "Complaint Type"
+				values = {"Plumbing","Cleanliness","Electrical","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_filed
+			(
+    			type = date
+				displayname = "Date Filed"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"In Progress","Resolved","Open"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_staff
+			(
+    			type = text
+				displayname = "Assigned Staff"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form fees
+		{
+			displayname = "Fees"
+			success message = "Feis Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = students.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_fee_amount
+			(
+				displayname = "Total Fee Amount"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			amount_paid
+			(
+				displayname = "Amount Paid"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			balance
+			(
+				displayname = "Balance"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_status
+			(
+				type = picklist
+				displayname = "Payment Status"
+				values = {"Partial","Paid","Pending"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_date
+			(
+    			type = date
+				displayname = "Payment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Fee Record Created","Payment Pending","Fee Waiver Requested","Payment Received","Payment Delayed","Fee Waiver Approved","Payment Processed","Payment Rejected","Balance Updated","Partial Payment Received","Fee Record Closed","Payment Adjustment Required","Adjustment Processed","Adjustment Rejected","Late Fee Applied","Fee Record Reopened"}
+			}
+		}
+		form rooms
+		{
+			displayname = "Rooms"
+			success message = "Room Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			room_id
+			(
+    			type = autonumber
+				displayname = "Room ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			block_name
+			(
+    			type = text
+				displayname = "Block Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			floor_number
+			(
+				type = number
+				displayname = "Floor Number"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_number
+			(
+    			type = text
+				displayname = "Room Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_type
+			(
+				type = picklist
+				displayname = "Room Type"
+				values = {"Triple","Single","Double"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			capacity
+			(
+				type = number
+				displayname = "Capacity"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			current_occupancy
+			(
+				type = number
+				displayname = "Current Occupancy"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			availability_status
+			(
+				type = radiobuttons
+				displayname = "Availability Status"
+				values = {"Available","Full"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form students
+		{
+			displayname = "Students"
+			success message = "Student Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student_id
+			(
+    			type = autonumber
+				displayname = "Student ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			full_name
+			(
+    			type = name
+				displayname = "Full Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gender
+			(
+				type = picklist
+				displayname = "Gender"
+				values = {"Male","Female","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_of_birth
+			(
+    			type = date
+				displayname = "Date of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone_number
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course_department
+			(
+				type = picklist
+				displayname = "Course / Department"
+				values = {"Chemistry","Psychology","Computer Science","Biology","Mathematics","Mechanical Engineering","Business Administration","Physics","Electrical Engineering"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			year_of_study
+			(
+				type = picklist
+				displayname = "Year of Study"
+				values = {"First Year","Fourth Year","Second Year","Third Year"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			guardian_name
+			(
+    			type = name
+				displayname = "Guardian Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			guardian_phone
+			(
+    			type = phonenumber
+				displayname = "Guardian Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			address
+			(
+    			type = address
+				displayname = "Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "Latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "Longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_assigned
+			(
+				type = list	
+				displayname = "Room Assigned"
+				values  = rooms.ID
+    			displayformat = [room_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Student Registration Initiated","Student Information Verified","Student Registration Cancelled","Room Availability Checked","Room Assigned","Room Not Available","Registration Confirmation Sent","Room Assignment Rejected","Waitlist Placed","Waitlist Expired","Registration Complete","Registration Incomplete","Student Onboarded","Onboarding Complete"}
+			}
+		}
+	}
+	reports
+	{
+		list complaints_Report
+		{
+			displayName = "All Complaints"
+			show all rows from complaints    
+			(
+				student as "Student"
+				room as "Room"
+				complaint_type as "Complaint Type"
+				description as "Description"
+				date_filed as "Date Filed"
+				status as "Status"
+				assigned_staff as "Assigned Staff"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (complaint_type == "Electrical")
+				fields = [complaint_type]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (complaint_type == "Other")
+				fields = [complaint_type]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (complaint_type == "Plumbing")
+				fields = [complaint_type]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban complaints_by_complaint_type
+		{
+			displayName = "Complaint Types"
+			show all rows from complaints    
+			(
+				student as "Student"
+				room as "Room"
+				complaint_type as "Complaint Type"
+				description as "Description"
+				date_filed as "Date Filed"
+				status as "Status"
+				assigned_staff as "Assigned Staff"
+			)
+			options
+			(
+	 			display field = complaint_type
+	 		)
+		}
+		list students_Report
+		{
+			displayName = "All Students"
+			show all rows from students    
+			(
+				student_id as "Student ID"
+				full_name  as "Full Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				gender as "Gender"
+				date_of_birth as "Date of Birth"
+				phone_number as "Phone Number"
+				email as "Email"
+				course_department as "Course / Department"
+				year_of_study as "Year of Study"
+				guardian_name  as "Guardian Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				guardian_phone as "Guardian Phone"
+				address  as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				room_assigned as "Room Assigned"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (gender == "Female")
+				fields = [gender]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (gender == "Male")
+				fields = [gender]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (gender == "Other")
+				fields = [gender]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban students_by_course_department
+		{
+			displayName = "Students Board"
+			show all rows from students    
+			(
+				student_id as "Student ID"
+				full_name  as "Full Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				gender as "Gender"
+				date_of_birth as "Date of Birth"
+				phone_number as "Phone Number"
+				email as "Email"
+				course_department as "Course / Department"
+				year_of_study as "Year of Study"
+				guardian_name  as "Guardian Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				guardian_phone as "Guardian Phone"
+				address  as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				room_assigned as "Room Assigned"
+			)
+			options
+			(
+	 			display field = course_department
+	 		)
+		}
+		list fees_Report
+		{
+			displayName = "All Fees"
+			show all rows from fees    
+			(
+				student as "Student"
+				total_fee_amount as "Total Fee Amount"
+				(
+					display = total,average,min,max	
+				)
+				amount_paid as "Amount Paid"
+				(
+					display = total,average,min,max	
+				)
+				balance as "Balance"
+				(
+					display = total,average,min,max	
+				)
+				payment_status as "Payment Status"
+				payment_date as "Payment Date"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (payment_status == "Paid")
+				fields = [payment_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (payment_status == "Partial")
+				fields = [payment_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (payment_status == "Pending")
+				fields = [payment_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban fees_by_payment_status
+		{
+			displayName = "Payment Statuses"
+			show all rows from fees    
+			(
+				student as "Student"
+				total_fee_amount as "Total Fee Amount"
+				(
+					display = total,average,min,max	
+				)
+				amount_paid as "Amount Paid"
+				(
+					display = total,average,min,max	
+				)
+				balance as "Balance"
+				(
+					display = total,average,min,max	
+				)
+				payment_status as "Payment Status"
+				payment_date as "Payment Date"
+			)
+			options
+			(
+	 			display field = payment_status
+	 		)
+		}
+		list rooms_Report
+		{
+			displayName = "All Rooms"
+			show all rows from rooms    
+			(
+				room_id as "Room ID"
+				block_name as "Block Name"
+				floor_number as "Floor Number"
+				room_number as "Room Number"
+				room_type as "Room Type"
+				capacity as "Capacity"
+				current_occupancy as "Current Occupancy"
+				availability_status as "Availability Status"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (room_type == "Single")
+				fields = [room_type]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (room_type == "Triple")
+				fields = [room_type]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban rooms_by_room_type
+		{
+			displayName = "Room Types"
+			show all rows from rooms    
+			(
+				room_id as "Room ID"
+				block_name as "Block Name"
+				floor_number as "Floor Number"
+				room_number as "Room Number"
+				room_type as "Room Type"
+				capacity as "Capacity"
+				current_occupancy as "Current Occupancy"
+				availability_status as "Availability Status"
+			)
+			options
+			(
+	 			display field = room_type
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='75%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#5A3D9B'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'business-payment'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.fees.amount_paid.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Amount Paid'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#734AD0'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.fees.total_fee_amount.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#E7E7E7'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Total Fee Amounts'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#9366F9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#AF8CFF'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'sport-user-snowboard'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.fees.balance.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Balances'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#734AD0'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.complaints.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Complaints'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Statuses'\n\t\n\t\ttitleSize = '15px'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '17px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '24%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#1ABE75'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'loader-refresh'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;In Progress&quot;'\n\t  value = 'thisapp.complaints.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'In Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '24%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#E2335C'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'design-bug'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Resolved&quot;'\n\t  value = 'thisapp.complaints.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Resolved'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#1678F9'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'shopping-box-3d-67'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Open&quot;'\n\t  value = 'thisapp.complaints.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Open'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '27%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F6BC2B'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '20px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.complaints.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'complaints'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Complaints'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'students'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Students'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'fees'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Fees'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'rooms'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Rooms'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Total Fee Amount by Amount Paid'\n\t\n\t\ttitleSize = '15px'\n\ttype = 'Scatter'\n\txtitle = 'Total Fee Amount'\n\tytitle = 'Amount Paid'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'fees'\n\txfield = 'total_fee_amount'\n\tyfields = 'value:amount_paid'\n\t\tDelugeCriteria = 'total_fee_amount is not null'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Payment Status by Total Fee Amount'\n\t\n\t\ttitleSize = '15px'\n\ttype = 'Bar'\n\txtitle = 'Payment Status'\n\tytitle = 'Total Fee Amount'\n\tbgColor = '#FFFFFF'\n\ttheme = '#198391'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'fees'\n\txfield = 'payment_status'\n\tyfields = 'sum:total_fee_amount'\n\t\tDelugeCriteria = 'payment_status is not null &amp;&amp; payment_status != &quot;&quot;'\n/>\n\n</column>\n</row>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'complaints_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'custom'\n\theightValue = '500'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			student_registration_and_room_assignment as "Student Registration and Room Assignment"
+    			{
+        			type = Blueprint
+        			form = students
+        			start
+        			{
+            			start stage = "Student Registration Initiated"
+        			}
+        			stages
+        			{
+           			"Student Registration Initiated"
+           			{
+           			}
+           			"Student Information Verified"
+           			{
+           			}
+           			"Student Registration Cancelled"
+           			{
+           			}
+           			"Room Availability Checked"
+           			{
+           			}
+           			"Room Assigned"
+           			{
+           			}
+           			"Room Not Available"
+           			{
+           			}
+           			"Registration Confirmation Sent"
+           			{
+           			}
+           			"Room Assignment Rejected"
+           			{
+           			}
+           			"Waitlist Placed"
+           			{
+           			}
+           			"Waitlist Expired"
+           			{
+           			}
+           			"Registration Complete"
+           			{
+           			}
+           			"Registration Incomplete"
+           			{
+           			}
+           			"Student Onboarded"
+           			{
+           			}
+           			"Onboarding Complete"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				add_to_waitlist as "Add to Room Waitlist"
+    				{
+         				type = normal
+         				from stage = "Room Not Available"
+         				to stage = "Waitlist Placed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				assign_from_waitlist as "Assign Room from Waitlist"
+    				{
+         				type = normal
+         				from stage = "Waitlist Placed"
+         				to stage = "Room Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				assign_room as "Assign Available Room"
+    				{
+         				type = normal
+         				from stage = "Room Availability Checked"
+         				to stage = "Room Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_registration as "Cancel Registration"
+    				{
+         				type = normal
+         				from stage = "Student Registration Initiated"
+         				to stage = "Student Registration Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_registration_no_room as "Cancel Registration Due to No Room"
+    				{
+         				type = normal
+         				from stage = "Room Not Available"
+         				to stage = "Student Registration Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_registration_waitlist_timeout as "Cancel Registration After Waitlist Timeout"
+    				{
+         				type = normal
+         				from stage = "Waitlist Expired"
+         				to stage = "Student Registration Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				check_room_availability as "Check Room Availability"
+    				{
+         				type = normal
+         				from stage = "Student Information Verified"
+         				to stage = "Room Availability Checked"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_onboarding as "Complete Onboarding Process"
+    				{
+         				type = normal
+         				from stage = "Registration Complete"
+         				to stage = "Student Onboarded"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_registration_complete as "Confirm Final Registration"
+    				{
+         				type = normal
+         				from stage = "Registration Confirmation Sent"
+         				to stage = "Registration Complete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				expire_waitlist as "Remove from Waitlist After Timeout"
+    				{
+         				type = normal
+         				from stage = "Waitlist Placed"
+         				to stage = "Waitlist Expired"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				mark_onboarding_complete as "Mark Onboarding as Final"
+    				{
+         				type = normal
+         				from stage = "Student Onboarded"
+         				to stage = "Onboarding Complete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				notify_no_room as "Notify of No Available Rooms"
+    				{
+         				type = normal
+         				from stage = "Room Availability Checked"
+         				to stage = "Room Not Available"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reassign_room as "Reassign Room or Request Alternate"
+    				{
+         				type = normal
+         				from stage = "Room Assigned"
+         				to stage = "Room Assignment Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				recheck_room_availability as "Recheck Room Availability"
+    				{
+         				type = normal
+         				from stage = "Room Assignment Rejected"
+         				to stage = "Room Availability Checked"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_registration as "Reopen Registration for Updates"
+    				{
+         				type = normal
+         				from stage = "Registration Confirmation Sent"
+         				to stage = "Registration Incomplete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resend_confirmation as "Resend Confirmation After Updates"
+    				{
+         				type = normal
+         				from stage = "Registration Incomplete"
+         				to stage = "Registration Confirmation Sent"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				send_confirmation_email as "Send Confirmation Email"
+    				{
+         				type = normal
+         				from stage = "Room Assigned"
+         				to stage = "Registration Confirmation Sent"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				verify_student_details as "Verify Student Details"
+    				{
+         				type = normal
+         				from stage = "Student Registration Initiated"
+         				to stage = "Student Information Verified"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			fee_payment_and_tracking as "Fee Payment and Tracking"
+    			{
+        			type = Blueprint
+        			form = fees
+        			start
+        			{
+            			start stage = "Fee Record Created"
+        			}
+        			stages
+        			{
+           			"Fee Record Created"
+           			{
+           			}
+           			"Payment Pending"
+           			{
+           			}
+           			"Fee Waiver Requested"
+           			{
+           			}
+           			"Payment Received"
+           			{
+           			}
+           			"Payment Delayed"
+           			{
+           			}
+           			"Fee Waiver Approved"
+           			{
+           			}
+           			"Payment Processed"
+           			{
+           			}
+           			"Payment Rejected"
+           			{
+           			}
+           			"Balance Updated"
+           			{
+           			}
+           			"Partial Payment Received"
+           			{
+           			}
+           			"Fee Record Closed"
+           			{
+           			}
+           			"Payment Adjustment Required"
+           			{
+           			}
+           			"Adjustment Processed"
+           			{
+           			}
+           			"Adjustment Rejected"
+           			{
+           			}
+           			"Late Fee Applied"
+           			{
+           			}
+           			"Fee Record Reopened"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				adjust_payment as "Initiate Adjustment Process"
+    				{
+         				type = normal
+         				from stage = "Balance Updated"
+         				to stage = "Payment Adjustment Required"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				apply_adjustment as "Apply Adjustment and Update Balance"
+    				{
+         				type = normal
+         				from stage = "Payment Adjustment Required"
+         				to stage = "Adjustment Processed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				apply_late_fee as "Apply Late Fee and Update Balance"
+    				{
+         				type = normal
+         				from stage = "Payment Delayed"
+         				to stage = "Late Fee Applied"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				apply_waiver as "Apply Waiver and Adjust Balance"
+    				{
+         				type = normal
+         				from stage = "Payment Pending"
+         				to stage = "Fee Waiver Approved"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				apply_waiver_update as "Apply Waiver and Update Balance"
+    				{
+         				type = normal
+         				from stage = "Fee Waiver Approved"
+         				to stage = "Balance Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_fee_record as "Close Fee Record"
+    				{
+         				type = normal
+         				from stage = "Balance Updated"
+         				to stage = "Fee Record Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				finalize_partial as "Finalize Partial Payment and Update Balance"
+    				{
+         				type = normal
+         				from stage = "Partial Payment Received"
+         				to stage = "Balance Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				flag_delay as "Flag for Follow-Up"
+    				{
+         				type = normal
+         				from stage = "Payment Pending"
+         				to stage = "Payment Delayed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				initiate_payment as "Initiate Payment Process"
+    				{
+         				type = normal
+         				from stage = "Fee Record Created"
+         				to stage = "Payment Pending"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				process_adjustment_after_reopen as "Process Adjustment After Reopening"
+    				{
+         				type = normal
+         				from stage = "Fee Record Reopened"
+         				to stage = "Adjustment Processed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				process_payment as "Process Payment and Update Records"
+    				{
+         				type = normal
+         				from stage = "Payment Received"
+         				to stage = "Payment Processed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				record_late_payment as "Record Late Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Delayed"
+         				to stage = "Payment Received"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				record_partial as "Record Partial Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Processed"
+         				to stage = "Partial Payment Received"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				record_payment as "Record Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Pending"
+         				to stage = "Payment Received"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_adjustment as "Reject Adjustment and Notify Stakeholder"
+    				{
+         				type = normal
+         				from stage = "Payment Adjustment Required"
+         				to stage = "Adjustment Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_payment as "Revert Payment and Notify Student"
+    				{
+         				type = normal
+         				from stage = "Payment Received"
+         				to stage = "Payment Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_for_payment as "Reopen for New Payment"
+    				{
+         				type = normal
+         				from stage = "Fee Record Reopened"
+         				to stage = "Payment Pending"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_waiver as "Request Fee Waiver"
+    				{
+         				type = normal
+         				from stage = "Fee Record Created"
+         				to stage = "Fee Waiver Requested"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				revert_to_pending as "Revert to Pending for Remaining Amount"
+    				{
+         				type = normal
+         				from stage = "Partial Payment Received"
+         				to stage = "Payment Pending"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				revert_to_pending_payment as "Revert to Pending and Request New Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Rejected"
+         				to stage = "Payment Pending"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_after_adjustment as "Update Balance After Adjustment"
+    				{
+         				type = normal
+         				from stage = "Adjustment Processed"
+         				to stage = "Balance Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_balance as "Update Balance and Confirm Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Processed"
+         				to stage = "Balance Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_with_late_fee as "Update Balance with Late Fee"
+    				{
+         				type = normal
+         				from stage = "Late Fee Applied"
+         				to stage = "Balance Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Room Allocation Officer"
+			{
+				name = "Room Allocation Officer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Assign rooms to students based on availability and preferences \n"
+				ModulePermissions
+				{
+					complaints
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							complaints_Report={"View"}
+							complaints_by_complaint_type={"View"}
+						}
+					}
+					students
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View"}
+							students_by_course_department={"View"}
+						}
+					}
+					rooms
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							rooms_Report={"View","Edit","Delete"}
+							rooms_by_room_type={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Complaint Resolution Specialist"
+			{
+				name = "Complaint Resolution Specialist"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Assign and monitor complaints to appropriate staff \n"
+				ModulePermissions
+				{
+					complaints
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							complaints_Report={"View","Edit","Delete"}
+							complaints_by_complaint_type={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Hostel Administrator"
+			{
+				name = "Hostel Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee overall hostel operations and system management \n"
+				ModulePermissions
+				{
+					complaints
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							complaints_Report={"View","Edit","Delete"}
+							complaints_by_complaint_type={"View","Edit","Delete"}
+						}
+					}
+					students
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View","Edit","Delete"}
+							students_by_course_department={"View","Edit","Delete"}
+						}
+					}
+					fees
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							fees_by_payment_status={"View"}
+							fees_Report={"View"}
+						}
+					}
+					rooms
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							rooms_Report={"View","Edit","Delete"}
+							rooms_by_room_type={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Fee Manager"
+			{
+				name = "Fee Manager"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Track and update fee payments for all students \n"
+				ModulePermissions
+				{
+					fees
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							fees_by_payment_status={"View","Edit","Delete"}
+							fees_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Parent/Guardian"
+			{
+				name = "Parent/Guardian"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Receive updates on student’s room assignment and status \n"
+				ModulePermissions
+				{
+					students
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View"}
+							students_by_course_department={"View"}
+						}
+					}
+					fees
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							fees_by_payment_status={"View"}
+							fees_Report={"View"}
+						}
+					}
+				}
+			}
+			"Student"
+			{
+				name = "Student"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Register for hostel accommodation and provide personal details \n"
+				ModulePermissions
+				{
+					complaints
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							complaints_Report={"View","Edit"}
+							complaints_by_complaint_type={"View","Edit"}
+						}
+					}
+					students
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							students_Report={"View"}
+							students_by_course_department={"View"}
+						}
+					}
+					fees
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							fees_by_payment_status={"View"}
+							fees_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form complaints
+			{
+				label placement = left
+			}
+			form fees
+			{
+				label placement = left
+			}
+			form rooms
+			{
+				label placement = left
+			}
+			form students
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report complaints_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								student as "Student"
+								room as "Room"
+								complaint_type as "Complaint Type"
+								description as "Description"
+								date_filed as "Date Filed"
+								status as "Status"
+								assigned_staff as "Assigned Staff"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								room as "Room"
+								complaint_type as "Complaint Type"
+								description as "Description"
+								date_filed as "Date Filed"
+								status as "Status"
+								assigned_staff as "Assigned Staff"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Room"
+		     				related field = room
+							fields
+							(
+								room_id as "Room ID"
+								block_name as "Block Name"
+								floor_number as "Floor Number"
+								room_number as "Room Number"
+								room_type as "Room Type"
+								capacity as "Capacity"
+								current_occupancy as "Current Occupancy"
+								availability_status as "Availability Status"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student ID"
+								full_name as "Full Name"
+								gender as "Gender"
+								date_of_birth as "Date of Birth"
+								phone_number as "Phone Number"
+								email as "Email"
+								course_department as "Course / Department"
+								year_of_study as "Year of Study"
+								guardian_name as "Guardian Name"
+								guardian_phone as "Guardian Phone"
+								address as "Address"
+								room_assigned as "Room Assigned"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report complaints_by_complaint_type
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								assigned_staff as "Assigned Staff"
+								student as "Student"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								student as "Student"
+								room as "Room"
+								complaint_type as "Complaint Type"
+								description as "Description"
+								date_filed as "Date Filed"
+								status as "Status"
+								assigned_staff as "Assigned Staff"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report students_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								student_id as "Student ID"
+								full_name as "Full Name"
+								gender as "Gender"
+								date_of_birth as "Date of Birth"
+								phone_number as "Phone Number"
+								email as "Email"
+								course_department as "Course / Department"
+								year_of_study as "Year of Study"
+								guardian_name as "Guardian Name"
+								guardian_phone as "Guardian Phone"
+								address as "Address"
+								room_assigned as "Room Assigned"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								student_id as "Student ID"
+								full_name as "Full Name"
+								gender as "Gender"
+								date_of_birth as "Date of Birth"
+								phone_number as "Phone Number"
+								email as "Email"
+								course_department as "Course / Department"
+								year_of_study as "Year of Study"
+								guardian_name as "Guardian Name"
+								guardian_phone as "Guardian Phone"
+								address as "Address"
+								room_assigned as "Room Assigned"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Room Assigned"
+		     				related field = room_assigned
+							fields
+							(
+								room_id as "Room ID"
+								block_name as "Block Name"
+								floor_number as "Floor Number"
+								room_number as "Room Number"
+								room_type as "Room Type"
+								capacity as "Capacity"
+								current_occupancy as "Current Occupancy"
+								availability_status as "Availability Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report students_by_course_department
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								full_name as "Full Name"
+								guardian_name as "Guardian Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								student_id as "Student ID"
+								full_name as "Full Name"
+								gender as "Gender"
+								date_of_birth as "Date of Birth"
+								phone_number as "Phone Number"
+								email as "Email"
+								course_department as "Course / Department"
+								year_of_study as "Year of Study"
+								guardian_name as "Guardian Name"
+								guardian_phone as "Guardian Phone"
+								address as "Address"
+								room_assigned as "Room Assigned"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report fees_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								student as "Student"
+								total_fee_amount as "Total Fee Amount"
+								amount_paid as "Amount Paid"
+								balance as "Balance"
+								payment_status as "Payment Status"
+								payment_date as "Payment Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								total_fee_amount as "Total Fee Amount"
+								amount_paid as "Amount Paid"
+								balance as "Balance"
+								payment_status as "Payment Status"
+								payment_date as "Payment Date"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student ID"
+								full_name as "Full Name"
+								gender as "Gender"
+								date_of_birth as "Date of Birth"
+								phone_number as "Phone Number"
+								email as "Email"
+								course_department as "Course / Department"
+								year_of_study as "Year of Study"
+								guardian_name as "Guardian Name"
+								guardian_phone as "Guardian Phone"
+								address as "Address"
+								room_assigned as "Room Assigned"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report fees_by_payment_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								student as "Student"
+								total_fee_amount as "Total Fee Amount"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								student as "Student"
+								total_fee_amount as "Total Fee Amount"
+								amount_paid as "Amount Paid"
+								balance as "Balance"
+								payment_status as "Payment Status"
+								payment_date as "Payment Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report rooms_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								room_id as "Room ID"
+								block_name as "Block Name"
+								floor_number as "Floor Number"
+								room_number as "Room Number"
+								room_type as "Room Type"
+								capacity as "Capacity"
+								current_occupancy as "Current Occupancy"
+								availability_status as "Availability Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								room_id as "Room ID"
+								block_name as "Block Name"
+								floor_number as "Floor Number"
+								room_number as "Room Number"
+								room_type as "Room Type"
+								capacity as "Capacity"
+								current_occupancy as "Current Occupancy"
+								availability_status as "Availability Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report rooms_by_room_type
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								block_name as "Block Name"
+								room_number as "Room Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								room_id as "Room ID"
+								block_name as "Block Name"
+								floor_number as "Floor Number"
+								room_number as "Room Number"
+								room_type as "Room Type"
+								capacity as "Capacity"
+								current_occupancy as "Current Occupancy"
+								availability_status as "Availability Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Complaints"
+					icon = "tech-headphones"
+					form  complaints
+					{
+						icon = "ui-1-bold-add"
+					}
+					report complaints_Report
+					{
+						icon = "travel-world"
+					}
+					report complaints_by_complaint_type
+					{
+						icon = "tech-2-keyboard-wireless"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Students"
+					icon = "education-pencil-47"
+					form  students
+					{
+						icon = "ui-1-bold-add"
+					}
+					report students_Report
+					{
+						icon = "travel-world"
+					}
+					report students_by_course_department
+					{
+						icon = "design-artboard"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Fees"
+					icon = "business-payment"
+					form  fees
+					{
+						icon = "ui-1-bold-add"
+					}
+					report fees_Report
+					{
+						icon = "travel-world"
+					}
+					report fees_by_payment_status
+					{
+						icon = "shopping-receipt"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Rooms"
+					icon = "furniture-table"
+					form  rooms
+					{
+						icon = "ui-1-bold-add"
+					}
+					report rooms_Report
+					{
+						icon = "travel-world"
+					}
+					report rooms_by_room_type
+					{
+						icon = "furniture-table"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "5"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form complaints
+			{
+				label placement = auto
+			}
+			form fees
+			{
+				label placement = auto
+			}
+			form rooms
+			{
+				label placement = auto
+			}
+			form students
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "company_logo"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form complaints
+			{
+				label placement = auto
+			}
+			form fees
+			{
+				label placement = auto
+			}
+			form rooms
+			{
+				label placement = auto
+			}
+			form students
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "company_logo"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

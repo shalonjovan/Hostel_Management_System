@@ -1,9 +1,9 @@
-# 🏨 Hostel Management System  
+# Hostel Management System  
 Developed using Zoho Creator  
 
-## 📌 Project Overview
+## Project Overview
 
-The Hostel Management System is a low-code application developed using Zoho Creator to automate and manage hostel operations efficiently.  
+The Hostel Management System is a low-code application developed using Zoho Creator to automate and manage hostel operations efficiently.
 
 The system handles student records, room allocation, fee tracking, and complaint management with automated workflows and role-based access control.
 
@@ -11,7 +11,7 @@ This application is designed to reduce manual paperwork, prevent allocation erro
 
 ---
 
-## 🎯 Objective
+## Objective
 
 To design and develop a centralized system that:
 
@@ -23,7 +23,7 @@ To design and develop a centralized system that:
 
 ---
 
-## 🛠 Platform Used
+## Platform Used
 
 - Zoho Creator (Low-Code Application Platform)
 - Deluge (for workflow automation)
@@ -31,9 +31,9 @@ To design and develop a centralized system that:
 
 ---
 
-## 🧩 Application Modules
+## Application Modules
 
-### 1️⃣ Student Management
+### 1. Student Management
 Stores complete student details including:
 - Student ID (Auto Generated)
 - Personal Information
@@ -43,7 +43,7 @@ Stores complete student details including:
 
 ---
 
-### 2️⃣ Room Management
+### 2. Room Management
 Manages hostel rooms with:
 - Room ID
 - Block and Floor Details
@@ -54,7 +54,7 @@ Manages hostel rooms with:
 
 ---
 
-### 3️⃣ Fee Management
+### 3. Fee Management
 Tracks hostel fee payments:
 - Total Fee Amount
 - Amount Paid
@@ -64,7 +64,7 @@ Tracks hostel fee payments:
 
 ---
 
-### 4️⃣ Complaint Management
+### 4. Complaint Management
 Allows students to register issues:
 - Complaint Type
 - Description
@@ -74,9 +74,9 @@ Allows students to register issues:
 
 ---
 
-## ⚙️ Workflows & Automation
+## Workflows and Automation
 
-The application includes intelligent automation:
+The application includes the following automation features:
 
 - Automatically updates room occupancy when a student is assigned.
 - Prevents room allocation if capacity is full.
@@ -86,7 +86,7 @@ The application includes intelligent automation:
 
 ---
 
-## 📊 Reports Generated
+## Reports Generated
 
 - List of Available Rooms
 - Students with Pending Fees
@@ -96,7 +96,7 @@ The application includes intelligent automation:
 
 ---
 
-## 📈 Dashboard Features
+## Dashboard Features
 
 The system dashboard displays:
 
@@ -107,28 +107,28 @@ The system dashboard displays:
 
 ---
 
-## 👥 User Roles & Permissions
+## User Roles and Permissions
 
-The application implements role-based access:
+The application implements role-based access control:
 
-- **Admin** – Full access to all modules
-- **Warden** – Manage students and complaints
-- **Accountant** – Manage fee records only
+- Admin – Full access to all modules
+- Warden – Manage students and complaints
+- Accountant – Manage fee records only
 
 This ensures data security and controlled access.
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 The application is deployed on Zoho Creator's cloud platform.
 
-🔗 **Live Application Link:**  
+Live Application Link:  
 (Add your Zoho Creator app link here)
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 (Add screenshots here)
 
@@ -141,7 +141,7 @@ Suggested screenshots:
 
 ---
 
-## 🧠 Key Learning Outcomes
+## Key Learning Outcomes
 
 - Designing relational data models
 - Implementing lookup relationships
@@ -152,8 +152,8 @@ Suggested screenshots:
 
 ---
 
-## 📌 Conclusion
+## Conclusion
 
 The Hostel Management System demonstrates how low-code platforms like Zoho Creator can be used to build scalable, automated, and user-friendly management systems.
 
-This project successfully integrates data management, automation, reporting, and access control into a single centralized application.
+This project successfully integrates data management, automation, reporting, and access control into a centralized application.
